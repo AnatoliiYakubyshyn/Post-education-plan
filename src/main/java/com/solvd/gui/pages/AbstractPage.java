@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.solvd.gui.utils.PageOpeningStrategy;
+import org.openqa.selenium.support.PageFactory;
 
 public abstract class AbstractPage {
 
@@ -17,6 +18,7 @@ public abstract class AbstractPage {
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     public WebDriver getDriver() {
@@ -43,5 +45,9 @@ public abstract class AbstractPage {
             return driver.getCurrentUrl().equals(url);
         }
         return marker.isDisplayed() && driver.getCurrentUrl().equals(url);
+    }
+
+    public void open() {
+        getDriver().get(url);
     }
 }
