@@ -12,7 +12,7 @@ import java.net.URL;
 
 public abstract class AbstractTest {
 
-    private final Logger LOGGER = LogManager.getLogger();
+    public final Logger LOGGER = LogManager.getLogger(AbstractTest.class);
 
     private WebDriver driver;
 
