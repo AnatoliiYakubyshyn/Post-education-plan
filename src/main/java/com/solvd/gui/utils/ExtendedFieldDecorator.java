@@ -20,7 +20,7 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
             if (locator == null) {
                 return null;
             }
-            return new ExtendedWebElement(proxyForLocator(loader, locator));
+            return new ExtendedWebElement(proxyForLocator(loader, locator),locator);
         }
         return super.decorate(loader, field);
     }

@@ -3,12 +3,13 @@ package com.solvd.gui.utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ExtendedWebElement  {
+public class ExtendedWebElement {
 
     private final static Logger LOGGER = LogManager.getLogger(ExtendedWebElement.class);
 
@@ -18,7 +19,10 @@ public class ExtendedWebElement  {
 
     private final WebDriverWait wait;
 
-    public ExtendedWebElement(WebElement webElement) {
+    private ElementLocator locator;
+
+    public ExtendedWebElement(WebElement webElement, ElementLocator locator) {
+        this.locator = locator;
         this.driver = CurrentDriver.getInstance().getDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(
                 Integer.parseInt((String) R.getConfigParameter("element_timeout"))));
@@ -30,9 +34,9 @@ public class ExtendedWebElement  {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(webElement));
             webElement.click();
-            LOGGER.info("element is clicked");
+            LOGGER.info(locator + " element is clicked");
         } catch (Exception e) {
-            LOGGER.error("element is not clickable");
+            LOGGER.error(locator + " element is not clickable");
         }
     }
 
@@ -41,22 +45,25 @@ public class ExtendedWebElement  {
         try {
             wait.until(ExpectedConditions.visibilityOf(webElement));
             webElement.sendKeys(text);
-            LOGGER.info("text is typed");
+            LOGGER.info(locator + " text is typed");
         } catch (Exception e) {
-            LOGGER.error("element is not displayed");
+            LOGGER.error(locator + " element is not displayed");
         }
     }
 
     public boolean isDisplayed() {
         try {
             wait.until(ExpectedConditions.visibilityOf(webElement));
-            LOGGER.info("element is displayed");
+            LOGGER.info(locator + "element is displayed");
             return true;
         } catch (Exception e) {
-            LOGGER.info("element is not displayed");
+            LOGGER.info(locator + "element is not displayed");
         }
         return false;
     }
 
+    public WebElement getElement() {
+        return webElement;
+    }
 
 }
