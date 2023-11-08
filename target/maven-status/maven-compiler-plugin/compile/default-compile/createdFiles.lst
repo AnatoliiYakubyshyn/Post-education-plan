@@ -1,0 +1,9 @@
+com/solvd/gui/pages/AbstractPage.class
+com/solvd/gui/pages/SignInPage.class
+com/solvd/gui/services/UserService.class
+com/solvd/gui/pojo/User.class
+com/solvd/gui/utils/PageOpeningStrategy.class
+com/solvd/gui/pages/HomePage.class
+com/solvd/gui/utils/ExtendedFieldDecorator.class
+com/solvd/gui/utils/R.class
+com/solvd/gui/utils/ExtendedWebElement.class

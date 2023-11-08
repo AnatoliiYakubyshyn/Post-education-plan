@@ -18,4 +18,10 @@ public class SignInTest extends AbstractTest {
         signInPage.signIn(UserService.getDefaultUser());
         Assert.assertTrue(homePage.isPageOpened());
     }
+
+    @Test
+    public void demoPurpose() {
+        getDriver().get("https://www.youtube.com/");
+        Assert.assertTrue(true);
+    }
 }

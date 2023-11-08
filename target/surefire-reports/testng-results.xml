@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-11-08T16:48:22 EET" name="All Test Suite" finished-at="2023-11-08T16:49:13 EET" duration-ms="51912">
+    <groups>
+    </groups>
+    <test started-at="2023-11-08T16:48:22 EET" name="all_tests" finished-at="2023-11-08T16:49:13 EET" duration-ms="51912">
+      <class name="com.solvd.SignInTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.solvd.SignInTest@56f6d40b]" started-at="2023-11-08T16:48:22 EET" name="setUp" finished-at="2023-11-08T16:48:27 EET" duration-ms="5838" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testExistingUser()[pri:0, instance:com.solvd.SignInTest@56f6d40b]" started-at="2023-11-08T16:48:27 EET" name="testExistingUser" finished-at="2023-11-08T16:49:13 EET" duration-ms="45842" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testExistingUser -->
+        <test-method signature="demoPurpose()[pri:0, instance:com.solvd.SignInTest@56f6d40b]" started-at="2023-11-08T16:48:27 EET" name="demoPurpose" finished-at="2023-11-08T16:48:45 EET" duration-ms="17993" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- demoPurpose -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.solvd.SignInTest@56f6d40b]" started-at="2023-11-08T16:49:13 EET" name="tearDown" finished-at="2023-11-08T16:49:13 EET" duration-ms="141" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.solvd.SignInTest -->
+      <class name="com.solvd.DemoTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.solvd.DemoTest@7fc44dec]" started-at="2023-11-08T16:48:22 EET" name="setUp" finished-at="2023-11-08T16:48:28 EET" duration-ms="6848" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="test()[pri:0, instance:com.solvd.DemoTest@7fc44dec]" started-at="2023-11-08T16:48:28 EET" name="test" finished-at="2023-11-08T16:48:39 EET" duration-ms="10107" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.solvd.DemoTest@7fc44dec]" started-at="2023-11-08T16:48:39 EET" name="tearDown" finished-at="2023-11-08T16:48:39 EET" duration-ms="120" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.solvd.DemoTest -->
+    </test> <!-- all_tests -->
+  </suite> <!-- All Test Suite -->
+</testng-results>

@@ -20,7 +20,7 @@ public abstract class AbstractPage {
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(new ExtendedFieldDecorator(new DefaultElementLocatorFactory(driver)),this);
+        PageFactory.initElements(new ExtendedFieldDecorator(new DefaultElementLocatorFactory(driver),driver),this);
     }
 
     public WebDriver getDriver() {

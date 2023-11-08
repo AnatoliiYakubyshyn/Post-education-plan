@@ -21,9 +21,9 @@ public class ExtendedWebElement {
 
     private ElementLocator locator;
 
-    public ExtendedWebElement(WebElement webElement, ElementLocator locator) {
+    public ExtendedWebElement(WebElement webElement, ElementLocator locator,WebDriver driver) {
         this.locator = locator;
-        this.driver = CurrentDriver.getInstance().getDriver();
+        this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(
                 Integer.parseInt((String) R.getConfigParameter("element_timeout"))));
         this.webElement = webElement;
@@ -45,7 +45,17 @@ public class ExtendedWebElement {
         try {
             wait.until(ExpectedConditions.visibilityOf(webElement));
             webElement.sendKeys(text);
-            LOGGER.info(locator + " text is typed");
+            LOGGER.info(locator + " text is typed:"+text);
+        } catch (Exception e) {
+            LOGGER.error(locator + " element is not displayed");
+        }
+    }
+
+    public void secretType(String text) {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(webElement));
+            webElement.sendKeys(text);
+            LOGGER.info(locator + " text is typed:"+"********");
         } catch (Exception e) {
             LOGGER.error(locator + " element is not displayed");
         }

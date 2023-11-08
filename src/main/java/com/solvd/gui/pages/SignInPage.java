@@ -26,7 +26,7 @@ public class SignInPage extends AbstractPage {
     }
 
     public void fillPasswordField(String password) {
-        passwordField.type(password);
+        passwordField.secretType(password);
     }
 
     public void signInButtonClick() {
