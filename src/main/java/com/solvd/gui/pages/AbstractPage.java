@@ -1,10 +1,12 @@
 package com.solvd.gui.pages;
 
+import com.solvd.gui.utils.ExtendedFieldDecorator;
+import com.solvd.gui.utils.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import com.solvd.gui.utils.PageOpeningStrategy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.DefaultElementLocatorFactory;
 
 public abstract class AbstractPage {
 
@@ -12,13 +14,13 @@ public abstract class AbstractPage {
 
     private String url;
 
-    private WebElement marker;
+    private ExtendedWebElement marker;
 
     private PageOpeningStrategy pageOpeningStrategy;
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(new ExtendedFieldDecorator(new DefaultElementLocatorFactory(driver)),this);
     }
 
     public WebDriver getDriver() {
@@ -29,7 +31,7 @@ public abstract class AbstractPage {
         this.pageOpeningStrategy = pageOpeningStrategy;
     }
 
-    protected void setMarker(WebElement marker) {
+    protected void setMarker(ExtendedWebElement marker) {
         this.marker = marker;
     }
 

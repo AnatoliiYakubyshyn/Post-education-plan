@@ -1,15 +1,15 @@
 package com.solvd.gui.pages;
 
+import com.solvd.gui.utils.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 
 import com.solvd.gui.utils.PageOpeningStrategy;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends AbstractPage {
 
     @FindBy(xpath = "//a[contains(text(),'Sign In')]")
-    private WebElement signInButton;
+    private ExtendedWebElement signInButton;
 
     public HomePage(WebDriver driver) {
         super(driver);
