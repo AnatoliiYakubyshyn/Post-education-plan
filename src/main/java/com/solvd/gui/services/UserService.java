@@ -1,6 +1,6 @@
 package com.solvd.gui.services;
 
-import com.solvd.gui.pojo.User;
+import com.solvd.gui.objects.User;
 
 public class UserService {
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Tests" data-provider-thread-count="4">
+    <test verbose="2" preserve-order="true" name="all_tests" parallel="methods" thread-count="4">
+        <classes>
+            <class name="com.solvd.SignInTest">
+
+            </class>
+            <class name="com.solvd.SignUpTest">
+
+            </class>
+        </classes>
+    </test>
+</suite>

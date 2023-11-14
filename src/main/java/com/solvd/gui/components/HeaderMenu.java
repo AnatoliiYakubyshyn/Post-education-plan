@@ -17,9 +17,17 @@ public class HeaderMenu extends AbstractComponent {
     @FindBy(linkText = "Create an Account" )
     private ExtendedWebElement createAccountButton;
 
+    @FindBy(xpath = ".//a[contains(text(),'Sign Out')]")
+    private ExtendedWebElement signOutButton;
+
+    @FindBy(xpath = ".//button[contains(@class,'switch')]")
+    private ExtendedWebElement buttonDropDownList;
+
+
     public HeaderMenu(SearchContext searchContext, WebDriver driver) {
-        super(driver, searchContext);
+        super(searchContext, driver);
     }
+
 
     public SignInPage clickSignInButton() {
         signInButton.click();
@@ -29,5 +37,10 @@ public class HeaderMenu extends AbstractComponent {
     public SignUpPage clickSignUpPage() {
         createAccountButton.click();
         return new SignUpPage(getDriver());
+    }
+
+    public void signOut() {
+        buttonDropDownList.click();
+        signOutButton.click();
     }
 }

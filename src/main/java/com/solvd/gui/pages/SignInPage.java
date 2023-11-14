@@ -3,7 +3,7 @@ package com.solvd.gui.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import com.solvd.gui.pojo.User;
+import com.solvd.gui.objects.User;
 import com.solvd.gui.utils.ExtendedWebElement;
 
 public class SignInPage extends AbstractMagentoPage {
