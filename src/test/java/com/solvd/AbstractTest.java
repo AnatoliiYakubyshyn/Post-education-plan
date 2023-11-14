@@ -28,9 +28,12 @@ public abstract class AbstractTest {
         try {
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.setEnableDownloads(true);
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),chromeOptions);
+            if (Boolean.parseBoolean((String) R.getConfigParameter("headless"))) {
+                chromeOptions.addArguments("--headless");
+            }
+            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(
-                    Integer.parseInt((String)R.getConfigParameter("page_load_timeout"))));
+                    Integer.parseInt((String) R.getConfigParameter("page_load_timeout"))));
 
         } catch (Exception e) {
             LOGGER.info(e);

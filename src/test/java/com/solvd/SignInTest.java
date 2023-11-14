@@ -14,14 +14,8 @@ public class SignInTest extends AbstractTest {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened());
-        SignInPage signInPage = homePage.clickSignInButton();
+        SignInPage signInPage = homePage.getHeaderMenu().clickSignInButton();
         signInPage.signIn(UserService.getDefaultUser());
         Assert.assertTrue(homePage.isPageOpened());
-    }
-
-    @Test
-    public void demoPurpose() {
-        getDriver().get("https://www.youtube.com/");
-        Assert.assertTrue(true);
     }
 }
