@@ -1,15 +1,10 @@
 package com.solvd.gui.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 import com.solvd.gui.utils.PageOpeningStrategy;
-import com.solvd.gui.components.HeaderMenu;
 
-public class HomePage extends AbstractPage {
-
-    @FindBy(xpath = "//header[contains(@class,'page')]")
-    private HeaderMenu headerMenu;
+public class HomePage extends AbstractMagentoPage {
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -17,7 +12,4 @@ public class HomePage extends AbstractPage {
         setUrl("https://magento.softwaretestingboard.com/");
     }
 
-    public HeaderMenu getHeaderMenu() {
-        return headerMenu;
-    }
 }

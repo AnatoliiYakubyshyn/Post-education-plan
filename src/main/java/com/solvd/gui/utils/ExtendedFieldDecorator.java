@@ -12,8 +12,6 @@ import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 import java.lang.reflect.Field;
 
 
-import com.solvd.gui.components.AbstractComponent;
-
 public class ExtendedFieldDecorator extends DefaultFieldDecorator {
 
     private final Logger LOGGER = LogManager.getLogger(ExtendedFieldDecorator.class);
