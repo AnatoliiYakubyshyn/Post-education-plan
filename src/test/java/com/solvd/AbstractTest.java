@@ -17,13 +17,13 @@ public abstract class AbstractTest {
 
     public final Logger LOGGER = LogManager.getLogger(AbstractTest.class);
 
-    private WebDriver driver;
+    private static final ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
     public WebDriver getDriver() {
-        return driver;
+        return drivers.get();
     }
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         try {
             ChromeOptions chromeOptions = new ChromeOptions();
@@ -31,9 +31,11 @@ public abstract class AbstractTest {
             if (Boolean.parseBoolean((String) R.getConfigParameter("headless"))) {
                 chromeOptions.addArguments("--headless");
             }
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
+            WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(
                     Integer.parseInt((String) R.getConfigParameter("page_load_timeout"))));
+            drivers.set(driver);
+
 
         } catch (Exception e) {
             LOGGER.info(e);
@@ -41,8 +43,8 @@ public abstract class AbstractTest {
 
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
-        driver.quit();
+        getDriver().quit();
     }
 }

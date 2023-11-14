@@ -1,12 +1,12 @@
 package com.solvd.gui.pages;
 
-import com.solvd.gui.pojo.User;
-import com.solvd.gui.utils.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SignInPage extends AbstractPage {
+import com.solvd.gui.objects.User;
+import com.solvd.gui.utils.ExtendedWebElement;
+
+public class SignInPage extends AbstractMagentoPage {
 
     @FindBy(xpath = "//input[contains(@name,'login[username]')]")
     private ExtendedWebElement emailField;

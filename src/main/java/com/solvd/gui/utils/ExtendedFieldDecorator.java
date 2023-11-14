@@ -1,6 +1,5 @@
 package com.solvd.gui.utils;
 
-import com.solvd.gui.components.HeaderMenu;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.SearchContext;
@@ -10,7 +9,6 @@ import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
 
 import java.lang.reflect.Field;
-
 
 import com.solvd.gui.components.AbstractComponent;
 
@@ -34,7 +32,7 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
             }
             return new ExtendedWebElement(proxyForLocator(loader, locator), locator, driver);
         }
-        if (HeaderMenu.class.isAssignableFrom(field.getType())) {
+        if (AbstractComponent.class.isAssignableFrom(field.getType())) {
             ElementLocator locator = factory.createLocator(field);
             if (locator == null) {
                 return null;

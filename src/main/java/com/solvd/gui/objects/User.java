@@ -1,4 +1,4 @@
-package com.solvd.gui.pojo;
+package com.solvd.gui.objects;
 
 public class User {
 
