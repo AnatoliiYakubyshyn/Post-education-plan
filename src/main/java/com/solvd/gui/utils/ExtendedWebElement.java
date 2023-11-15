@@ -76,4 +76,9 @@ public class ExtendedWebElement {
         return webElement;
     }
 
+
+    public String getText() {
+        return webElement.getText();
+    }
+
 }
