@@ -1,0 +1,25 @@
+name: All tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses:  actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Add crypto key to config file
+        run: echo "crypto_key_value=$crypto_key">> ./src/main/resources/_config.properties
+        env: 
+          crypto_key: ${{ secrets.CRYPTO_KEY }}
+      - name: Start Selenoid Server
+        uses: Xotabu4/selenoid-github-action@v2
+      - name: Build with Maven
+        run: mvn clean test -Dsuite=alltests
+        
