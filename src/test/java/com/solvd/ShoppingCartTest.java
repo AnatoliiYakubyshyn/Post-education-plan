@@ -13,7 +13,7 @@ public class ShoppingCartTest extends AbstractTest {
 
     private final String defaultSearch = "T-shirt";
 
-    @Test
+    @Test(testName = "regression#2")
     public void testShoppingCartFunctionality() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();

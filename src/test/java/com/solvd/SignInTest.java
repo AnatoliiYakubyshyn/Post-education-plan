@@ -9,7 +9,7 @@ import com.solvd.gui.pages.HomePage;
 
 public class SignInTest extends AbstractTest {
 
-    @Test
+    @Test(testName = "regression#1")
     public void testExistingUser() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();

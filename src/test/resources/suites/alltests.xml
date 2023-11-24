@@ -9,6 +9,9 @@
             <class name="com.solvd.SignUpTest">
 
             </class>
+            <class name="com.solvd.ShoppingCartTest">
+
+            </class>
         </classes>
     </test>
 </suite>
