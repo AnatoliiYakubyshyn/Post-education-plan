@@ -32,6 +32,7 @@ public abstract class AbstractTest {
                 chromeOptions.addArguments("--headless");
             }
             WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
+            driver.manage().window().maximize();
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(
                     Integer.parseInt((String) R.getConfigParameter("page_load_timeout"))));
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
