@@ -43,9 +43,6 @@ public class ReadDataFromCSV {
     public static void test() {
         Object[][] object = readCsv("src/test/resources/data/weak_passwords.csv");
         SoftAssert softAssert = new SoftAssert();
-        for (Object[] objects:object) {
-            System.out.println(objects[0]);
-        }
         softAssert.assertEquals(object[0][0],"1");
         softAssert.assertEquals(object[1][0],"2");
         softAssert.assertEquals(object[2][0],"Pass12");
