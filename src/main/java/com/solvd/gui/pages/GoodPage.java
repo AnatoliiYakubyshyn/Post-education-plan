@@ -21,6 +21,9 @@ public class GoodPage extends AbstractMagentoPage {
     @FindBy(xpath = "(//span[@class='swatch-attribute-selected-option'])[2]")
     private ExtendedWebElement titleColor;
 
+    @FindBy(xpath = "//div[contains(@class,'product-info-price')]//span[contains(@id,'price')]")
+    private ExtendedWebElement price;
+
     public GoodPage(WebDriver driver) {
         super(driver);
     }
@@ -43,5 +46,9 @@ public class GoodPage extends AbstractMagentoPage {
 
     public void submit() {
         submitButton.click();
+    }
+
+    public String getPrice() {
+        return price.getText();
     }
 }

@@ -81,6 +81,7 @@ public class ExtendedWebElement {
 
 
     public String getText() {
+        isDisplayed();
         return webElement.getText();
     }
 

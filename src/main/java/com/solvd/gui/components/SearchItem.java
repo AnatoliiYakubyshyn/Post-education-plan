@@ -1,5 +1,6 @@
 package com.solvd.gui.components;
 
+import com.solvd.gui.pages.GoodPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,7 @@ public class SearchItem extends AbstractComponent {
     }
 
     public String getPrice() {
+        System.out.println("hello");
         return price.getText();
     }
 
@@ -27,7 +29,8 @@ public class SearchItem extends AbstractComponent {
         addToCartButton.click();
     }
 
-    public void click() {
+    public GoodPage click() {
         getSearchContext().findElement(By.xpath(".")).click();
+        return new GoodPage(getDriver());
     }
 }

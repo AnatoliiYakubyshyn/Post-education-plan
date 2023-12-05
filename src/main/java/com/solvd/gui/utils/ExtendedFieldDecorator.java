@@ -43,7 +43,7 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
                 (el-> {
                     try {
                         return (AbstractComponent)clazz.getConstructor(new Class[]{SearchContext.class, WebDriver.class}).
-                                newInstance(proxyForLocator(loader, locator), driver);
+                                newInstance(el, driver);
                     } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
                              InvocationTargetException e) {
                         throw new RuntimeException(e);
