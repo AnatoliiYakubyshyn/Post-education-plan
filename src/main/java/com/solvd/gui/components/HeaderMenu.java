@@ -10,7 +10,6 @@ import com.solvd.gui.pages.CatalogSearchPage;
 import com.solvd.gui.pages.SignInPage;
 import com.solvd.gui.pages.SignUpPage;
 import com.solvd.gui.utils.ExtendedWebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HeaderMenu extends AbstractComponent {
 

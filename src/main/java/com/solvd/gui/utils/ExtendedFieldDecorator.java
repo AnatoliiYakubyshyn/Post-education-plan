@@ -8,15 +8,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.DefaultFieldDecorator;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 import org.openqa.selenium.support.pagefactory.ElementLocatorFactory;
+import org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
+import java.lang.reflect.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.solvd.gui.components.AbstractComponent;
-import org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler;
+
 
 public class ExtendedFieldDecorator extends DefaultFieldDecorator {
 
@@ -33,6 +34,21 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
         InvocationHandler handler = new LocatingElementListHandler(locator);
         List<WebElement> proxy = (List) Proxy.newProxyInstance(loader, new Class[]{List.class}, handler);
         return proxy.stream().map(el->new ExtendedWebElement(el, locator, driver)).collect(Collectors.toList());
+    }
+
+    private List<AbstractComponent> proxyForListLocatorExtended (ClassLoader loader, ElementLocator locator, Class clazz) {
+        InvocationHandler handler = new LocatingElementListHandler(locator);
+        List<WebElement> proxy = (List) Proxy.newProxyInstance(loader, new Class[]{List.class}, handler);
+        return (List<AbstractComponent>) proxy.stream().map
+                (el-> {
+                    try {
+                        return (AbstractComponent)clazz.getConstructor(new Class[]{SearchContext.class, WebDriver.class}).
+                                newInstance(proxyForLocator(loader, locator), driver);
+                    } catch (NoSuchMethodException | InstantiationException | IllegalAccessException |
+                             InvocationTargetException e) {
+                        throw new RuntimeException(e);
+                    }
+                }).collect(Collectors.toList());
     }
 
     @Override
@@ -53,6 +69,13 @@ public class ExtendedFieldDecorator extends DefaultFieldDecorator {
                         newInstance(proxyForLocator(loader, locator), driver);
             } catch (Exception e) {
                 LOGGER.error(e);
+            }
+        }
+        if (List.class.isAssignableFrom(field.getType())) {
+            ParameterizedType pT= (ParameterizedType) field.getGenericType();
+            Class<?> typeListClass = (Class<?>) pT.getActualTypeArguments()[0];
+            if (AbstractComponent.class.isAssignableFrom(typeListClass)) {
+                return proxyForListLocatorExtended(loader,locator,typeListClass);
             }
         }
         return List.class.isAssignableFrom(field.getType()) ? this.proxyForListLocatorExtended(loader, locator) : null;
