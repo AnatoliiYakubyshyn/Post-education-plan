@@ -1,11 +1,10 @@
 package com.solvd;
 
-import com.solvd.gui.pages.CartPage;
-import org.openqa.selenium.support.Color;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.solvd.gui.pages.CatalogSearchPage;
+import com.solvd.gui.pages.CartPage;
 import com.solvd.gui.pages.GoodPage;
 import com.solvd.gui.pages.HomePage;
 
