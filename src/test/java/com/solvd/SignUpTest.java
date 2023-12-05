@@ -41,13 +41,13 @@ public class SignUpTest extends AbstractTest {
                 signUpForm.getPasswordStrength().trim());
     }
 
-    @DataProvider(name = "weakPassProvider")
+    @DataProvider(name = "weakPassProvider",parallel = true)
     public Object[][] weakPassProvider() {
         return ReadDataFromCSV.readCsv("src/test/resources/data/weak_passwords.csv");
     }
 
 
-    @DataProvider(name = "userProvider")
+    @DataProvider(name = "userProvider",parallel = true)
     public Object[][] userProvider() {
         Object[][] res = new Object[50][1];
         for (int i = 0; i < res.length; i++) {
