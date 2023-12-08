@@ -21,7 +21,6 @@ public class SearchItem extends AbstractComponent {
     }
 
     public String getPrice() {
-        System.out.println("hello");
         return price.getText();
     }
 

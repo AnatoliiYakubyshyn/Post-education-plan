@@ -30,9 +30,10 @@ public abstract class AbstractTest {
             chromeOptions.setEnableDownloads(true);
             if (Boolean.parseBoolean((String) R.getConfigParameter("headless"))) {
                 chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--window-size=1280,800");
             }
             WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
-            driver.manage().window().maximize();
+            //driver.manage().window().maximize();
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(
                     Integer.parseInt((String) R.getConfigParameter("page_load_timeout"))));
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
