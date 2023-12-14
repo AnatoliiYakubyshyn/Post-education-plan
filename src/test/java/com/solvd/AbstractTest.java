@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
@@ -26,17 +27,15 @@ public abstract class AbstractTest {
     @BeforeMethod
     public void setUp() {
         try {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.setEnableDownloads(true);
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+            desiredCapabilities.setBrowserName((String)R.getConfigParameter("browserName"));
+
             if (Boolean.parseBoolean((String) R.getConfigParameter("headless"))) {
-                chromeOptions.addArguments("--headless");
-                chromeOptions.addArguments("--window-size=1280,800");
+                desiredCapabilities.setCapability("headless", true);
             }
-            WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
-            //driver.manage().window().maximize();
+            WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities);
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(
                     Integer.parseInt((String) R.getConfigParameter("page_load_timeout"))));
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             drivers.set(driver);
 
 
