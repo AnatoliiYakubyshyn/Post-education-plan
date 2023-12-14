@@ -15,7 +15,7 @@ import java.util.List;
 public class SearchTest extends AbstractTest {
 
     private final String defaultSearch = "T-shirt";
-    private static final Logger LOGGER = LogManager.getLogger(SearchItem.class);
+    private static final Logger LOGGER = LogManager.getLogger(SearchTest.class);
 
     @Test(testName = "time-consuming#1")
     public void testCheckCorrespondingOfPrices() throws Exception {
