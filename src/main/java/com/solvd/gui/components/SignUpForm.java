@@ -28,6 +28,9 @@ public class SignUpForm extends AbstractComponent {
     @FindBy(xpath = ".//button")
     private ExtendedWebElement submitButton;
 
+    @FindBy(id = "password-strength-meter")
+    private ExtendedWebElement passwordStrength;
+
     public SignUpForm(SearchContext searchContext, WebDriver driver) {
         super(searchContext, driver);
     }
@@ -75,6 +78,10 @@ public class SignUpForm extends AbstractComponent {
         fillConfirmPasswordField(confirmString);
         submit();
         return new AccountPage(getDriver());
+    }
+
+    public String getPasswordStrength() {
+        return passwordStrength.getText();
     }
 
 }

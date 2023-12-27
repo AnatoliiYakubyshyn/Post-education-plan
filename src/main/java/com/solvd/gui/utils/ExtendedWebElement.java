@@ -37,6 +37,7 @@ public class ExtendedWebElement {
             LOGGER.info(locator + " element is clicked");
         } catch (Exception e) {
             LOGGER.error(locator + " element is not clickable");
+            throw e;
         }
     }
 
@@ -48,6 +49,7 @@ public class ExtendedWebElement {
             LOGGER.info(locator + " text is typed:"+text);
         } catch (Exception e) {
             LOGGER.error(locator + " element is not displayed");
+            throw e;
         }
     }
 
@@ -58,6 +60,7 @@ public class ExtendedWebElement {
             LOGGER.info(locator + " text is typed:"+"********");
         } catch (Exception e) {
             LOGGER.error(locator + " element is not displayed");
+            throw e;
         }
     }
 
@@ -74,6 +77,12 @@ public class ExtendedWebElement {
 
     public WebElement getElement() {
         return webElement;
+    }
+
+
+    public String getText() {
+        isDisplayed();
+        return webElement.getText();
     }
 
 }

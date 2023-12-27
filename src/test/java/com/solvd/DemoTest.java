@@ -1,6 +1,5 @@
 package com.solvd;
 
-import com.solvd.gui.pages.HomePage;
 import org.testng.annotations.Test;
 
 public class DemoTest extends AbstractTest {
